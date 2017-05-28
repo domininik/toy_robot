@@ -5,8 +5,8 @@ class TestToyRobot < Test::Unit::TestCase
   def test_place
     robot = ToyRobot.new
     robot.place(0, 1, ToyRobot::EAST)
-    assert_equal(0, robot.position[0])
-    assert_equal(1, robot.position[1])
+    assert_equal(0, robot.position.x)
+    assert_equal(1, robot.position.y)
     assert_equal(ToyRobot::EAST, robot.direction)
   end
 
@@ -97,97 +97,95 @@ class TestToyRobot < Test::Unit::TestCase
     robot = ToyRobot.new
     robot.place(0, 0, ToyRobot::WEST)
     robot.move
-    assert_equal([0, 0], robot.position)
+    assert_equal([0, 0], [robot.position.x, robot.position.y])
     robot.place(0, 0, ToyRobot::SOUTH)
     robot.move
-    assert_equal([0, 0], robot.position)
+    assert_equal([0, 0], [robot.position.x, robot.position.y])
   end
 
   def test_invalid_move_in_south_east_corner
     robot = ToyRobot.new
     robot.place(4, 0, ToyRobot::EAST)
     robot.move
-    assert_equal([4, 0], robot.position)
+    assert_equal([4, 0], [robot.position.x, robot.position.y])
     robot.place(4, 0, ToyRobot::SOUTH)
     robot.move
-    assert_equal([4, 0], robot.position)
+    assert_equal([4, 0], [robot.position.x, robot.position.y])
   end
 
   def test_invalid_move_in_north_east_corner
     robot = ToyRobot.new
-
     robot.place(4, 4, ToyRobot::NORTH)
     robot.move
-    assert_equal([4, 4], robot.position)
-
+    assert_equal([4, 4], [robot.position.x, robot.position.y])
     robot.place(4, 4, ToyRobot::EAST)
     robot.move
-    assert_equal([4, 4], robot.position)
+    assert_equal([4, 4], [robot.position.x, robot.position.y])
   end
 
   def test_invalid_move_in_north_west_corner
     robot = ToyRobot.new
     robot.place(0, 4, ToyRobot::NORTH)
     robot.move
-    assert_equal([0, 4], robot.position)
+    assert_equal([0, 4], [robot.position.x, robot.position.y])
     robot.place(0, 4, ToyRobot::WEST)
     robot.move
-    assert_equal([0, 4], robot.position)
+    assert_equal([0, 4], [robot.position.x, robot.position.y])
   end
 
   def test_invalid_move_in_north_border
     robot = ToyRobot.new
     robot.place(2, 4, ToyRobot::NORTH)
     robot.move
-    assert_equal([2, 4], robot.position)
+    assert_equal([2, 4], [robot.position.x, robot.position.y])
   end
 
   def test_invalid_move_in_east_border
     robot = ToyRobot.new
     robot.place(4, 2, ToyRobot::EAST)
     robot.move
-    assert_equal([4, 2], robot.position)
+    assert_equal([4, 2], [robot.position.x, robot.position.y])
   end
 
   def test_invalid_move_in_south_border
     robot = ToyRobot.new
     robot.place(3, 0, ToyRobot::SOUTH)
     robot.move
-    assert_equal([3, 0], robot.position)
+    assert_equal([3, 0], [robot.position.x, robot.position.y])
   end
 
   def test_invalid_move_in_west_border
     robot = ToyRobot.new
     robot.place(0, 2, ToyRobot::WEST)
     robot.move
-    assert_equal([0, 2], robot.position)
+    assert_equal([0, 2], [robot.position.x, robot.position.y])
   end
 
   def test_valid_move_in_north_direction
     robot = ToyRobot.new
     robot.place(0, 0, ToyRobot::NORTH)
     robot.move
-    assert_equal([0, 1], robot.position)
+    assert_equal([0, 1], [robot.position.x, robot.position.y])
   end
 
   def test_valid_move_in_east_direction
     robot = ToyRobot.new
     robot.place(2, 2, ToyRobot::EAST)
     robot.move
-    assert_equal([3, 2], robot.position)
+    assert_equal([3, 2], [robot.position.x, robot.position.y])
   end
 
   def test_valid_move_in_south_direction
     robot = ToyRobot.new
     robot.place(3, 3, ToyRobot::SOUTH)
     robot.move
-    assert_equal([3, 2], robot.position)
+    assert_equal([3, 2], [robot.position.x, robot.position.y])
   end
 
   def test_valid_move_in_west_direction
     robot = ToyRobot.new
     robot.place(1, 1, ToyRobot::WEST)
     robot.move
-    assert_equal([0, 1], robot.position)
+    assert_equal([0, 1], [robot.position.x, robot.position.y])
   end
 end
