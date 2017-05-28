@@ -3,8 +3,13 @@
 require './toy_robot'
 
 puts 'Hello,'
-puts 'please type the command to play with the robot'
-puts 'or type EXIT to exit the program :)'
+puts 'please type the command to play with the robot :)'
+puts
+puts 'Allowed commands are:'
+puts 'PLACE followed by x value, y value and direction (e.g. PLACE 0,0,NORTH)'
+puts 'REPORT, LEFT, RIGTH and MOVE'
+puts
+puts 'Type EXIT to exit the program.'
 
 robot = ToyRobot.new
 
